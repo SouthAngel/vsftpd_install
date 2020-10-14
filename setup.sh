@@ -12,8 +12,11 @@ bakeorgfile(){
 
 _main(){
 
+local cmdo=''
+
 if [ -z `yum info vsftpd | grep "installed"` ];then
-    yum install -y vsftpd
+    cmdo=`yum install -y vsftpd`
+    echo $cmdo
     fi
 
 
@@ -30,20 +33,22 @@ if [ -z "$stmp" ]; then
     fi
 
 # 拷贝配置文件
-cp -f ./templates/vsftpd.conf /etc/vsftpd/vsftpd.conf
+cmdo=`cp -f ./templates/vsftpd.conf /etc/vsftpd/vsftpd.conf`
 
 # 配置虚拟用户
-mkdir /etc/vsftpd/vconf
+cmdo=`mkdir /etc/vsftpd/vconf`
 if [ ! -e "/etc/vsftpd/vconf" ]; then
-    cp -R ./templates/vuser_work /etc/vsftpd/vconf/vuser_work
+    cmdo=`cp -R ./templates/vuser_work /etc/vsftpd/vconf/vuser_work`
+    echo $cmdo
     fi
-db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db
+cmdo=`db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db`
+echo $cmdo
 echo "auth required pam_userdb.so db=/etc/vsftpd/vusers" > /etc/pam.d/vsftpd.vusers
 echo "account required pam_userdb.so db=/etc/vsftpd/vusers" >> /etc/pam.d/vsftpd.vusers
 
 # 配置防火墙
-firewall-cmd --zone=public --add-protocol=ftp --permanent
-firewall-cmd --zone=public --add-port=20-21/tcp --permanent
+firewall-cmd --zone=public --add-protocol=ftp --permanent &&
+firewall-cmd --zone=public --add-port=20-21/tcp --permanent &&
 firewall-cmd --reload
 
 # 重启vsftpd服务

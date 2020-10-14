@@ -9,7 +9,11 @@ vsftpd服务安装过程
 ## 脚本安装
 ```sh
 # 
-curl 
+yum install git 
+git clone https://github.com/SouthAngel/vsftpd_install.git
+cd vsftpd_install
+chmod +x setup.sh
+./setup.sh
 ```
 ----
 ## 自动化过程

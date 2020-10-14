@@ -17,6 +17,17 @@ sudo chmod +x setup.sh
 ```
 
 ----
+## 配置文件说明
+#### 配置文件地址
+- /etc/vsftpd/vsftpd.conf
+- /etc/vsftpd/vconf/[usersetting]
+
+设置|描述
+-|-
+anonymous_enable|允许匿名用户
+a|b
+
+----
 ## 遇到的问题
 - 设置 -s /sbin/nologin 用户后，客户端无法登录  
 &nbsp;&nbsp;&nbsp;&nbsp; /etc/shells 文件追加行 /sbin/nologin

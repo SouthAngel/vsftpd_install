@@ -53,6 +53,7 @@ firewall-cmd --zone=public --add-port=20-21/tcp --permanent &&
 firewall-cmd --reload
 
 # 重启vsftpd服务
+systemctl enable vsftpd
 systemctl restart vsftpd
 
 }

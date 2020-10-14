@@ -15,11 +15,6 @@ cd vsftpd_install
 chmod +x setup.sh
 ./setup.sh
 ```
-----
-## 自动化过程
-
-----
-## 自动化过程
 
 ----
 ## 遇到的问题

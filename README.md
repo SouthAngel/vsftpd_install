@@ -12,7 +12,7 @@ vsftpd服务安装过程
 yum install git 
 git clone https://github.com/SouthAngel/vsftpd_install.git
 cd vsftpd_install
-chmod +x setup.sh
+sudo chmod +x setup.sh
 ./setup.sh
 ```
 

@@ -41,14 +41,14 @@ touch /etc/vsftpd/chroot_list
 if [ ! -e "/etc/vsftpd/vconf" ]; then
     mkdir /etc/vsftpd/vconf
     echo $/etcmdo
-    cp -R ./templates/vuser_work /etc/vsftpd/vconf
+    cp -R ./templateFiles/vuser_work /etc/vsftpd/vconf
     fi
 db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db
 echo "auth required pam_userdb.so db=/etc/vsftpd/vusers" > /etc/pam.d/vsftpd.vusers
 echo "account required pam_userdb.so db=/etc/vsftpd/vusers" >> /etc/pam.d/vsftpd.vusers
 
 # 配置防火墙
-firewall-cmd --zone=public --add-protocol=ftp --permanent &&
+# firewall-cmd --zone=public --add-protocol=ftp --permanent &&
 firewall-cmd --zone=public --add-port=20-21/tcp --permanent &&
 firewall-cmd --reload
 

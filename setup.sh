@@ -30,15 +30,18 @@ stmp=`grep "^ftpvirtualuser" /etc/passwd`
 if [ -z "$stmp" ]; then
     useradd -d /opt/ftproot -s /sbin/nologin ftpvirtualuser
     fi
+sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
+setenforce 0
 
 # 拷贝配置文件
-cp -f ./templatesFiles/vsftpd.conf /etc/vsftpd/vsftpd.conf
+cp -f ./templateFiles/vsftpd.conf /etc/vsftpd/vsftpd.conf
+touch /etc/vsftpd/chroot_list
 
 # 配置虚拟用户
 if [ ! -e "/etc/vsftpd/vconf" ]; then
     mkdir /etc/vsftpd/vconf
     echo $/etcmdo
-    cp -R ./templates/vuser_work /etc/vsftpd/vconf/vuser_work
+    cp -R ./templates/vuser_work /etc/vsftpd/vconf
     fi
 db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db
 echo "auth required pam_userdb.so db=/etc/vsftpd/vusers" > /etc/pam.d/vsftpd.vusers

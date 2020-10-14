@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bakeorgfile(){
-    local tbfiles=("/etc/vsftpd/vsftpd.conf", "/etc/shells")
+    local tbfiles=("/etc/vsftpd/vsftpd.conf" "/etc/shells")
     for eachf in "${tbfiles[@]}";do
         local bfile="${eachf}.bake"
         if [ ! -e bfile ]; then
@@ -15,8 +15,7 @@ _main(){
 local cmdo=''
 
 if [ -z `yum info vsftpd | grep "installed"` ];then
-    cmdo=`yum install -y vsftpd`
-    echo $cmdo
+    yum install -y vsftpd
     fi
 
 
@@ -33,16 +32,15 @@ if [ -z "$stmp" ]; then
     fi
 
 # 拷贝配置文件
-cmdo=`cp -f ./templates/vsftpd.conf /etc/vsftpd/vsftpd.conf`
+cp -f ./templatesFiles/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
 # 配置虚拟用户
-cmdo=`mkdir /etc/vsftpd/vconf`
 if [ ! -e "/etc/vsftpd/vconf" ]; then
-    cmdo=`cp -R ./templates/vuser_work /etc/vsftpd/vconf/vuser_work`
-    echo $cmdo
+    mkdir /etc/vsftpd/vconf
+    echo $/etcmdo
+    cp -R ./templates/vuser_work /etc/vsftpd/vconf/vuser_work
     fi
-cmdo=`db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db`
-echo $cmdo
+db_load -T -t hash -f /etc/vsftpd/vconf/vuser_work/vu.txt /etc/vsftpd/vusers.db
 echo "auth required pam_userdb.so db=/etc/vsftpd/vusers" > /etc/pam.d/vsftpd.vusers
 echo "account required pam_userdb.so db=/etc/vsftpd/vusers" >> /etc/pam.d/vsftpd.vusers
 

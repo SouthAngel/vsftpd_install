@@ -12,7 +12,7 @@ bakeorgfile(){
 
 _main(){
 
-if [ -z `yum info vsftpd | grep "installed"` ];then
+if [[ -z `yum info vsftpd | grep "installed"` ]];then
     yum install -y vsftpd
     fi
 

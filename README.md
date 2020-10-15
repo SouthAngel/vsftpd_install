@@ -13,19 +13,33 @@ yum install git
 git clone https://github.com/SouthAngel/vsftpd_install.git
 cd vsftpd_install
 sudo chmod +x setup.sh
-./setup.sh
+sudo ./setup.sh
 ```
 
 ----
 ## 配置文件说明
 #### 配置文件地址
 - /etc/vsftpd/vsftpd.conf
-- /etc/vsftpd/vconf/[usersetting]
+- /etc/vsftpd/vconf/[username]
 
-设置|描述
--|-
-anonymous_enable|允许匿名用户
-a|b
+设置 | 描述 | 内容
+- | - | -
+anonymous_enable | 允许匿名用户 | YES/NO
+ftp_username | 匿名登录时使用的默认用户 | 指定用户名
+no_anon_password | 允许匿名用户不使用密码 | YES/NO
+anon_upload_enable | 允许匿名用户上传 | YES/NO
+anon_mkdir_write_enable | 允许匿名用户创建文件夹 | YES/NO
+anon_world_readable_only | 仅允许匿名用户通过ftp客户端查看，不允许下载 | YES/NO
+local_enable | 允许本地用户 | YES/NO
+write_enable | 开放写权限 | YES/NO
+local_umask | 上传内容的初始权限 | 参考系统umask设置
+userlist_enable | 使用用户限制名单 | YES/NO
+userlist_deny | 限制名单为黑名单，否则为白名单 | YES/NO
+userlist_file | 限制文件路径 | 文件路径
+chroot_local_user | 开启访问限制，不允许访问指定根目录以外的路径 | YES/NO
+chroot_list_enable | 使用访问限制列表 | YES/NO
+chroot_list_file | 访问限制列表文件路径 | 文件路径
+local_root | 指定根目录 | 文件夹路径
 
 ----
 ## 遇到的问题

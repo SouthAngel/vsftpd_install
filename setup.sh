@@ -49,6 +49,7 @@ echo "account required pam_userdb.so db=/etc/vsftpd/vusers" >> /etc/pam.d/vsftpd
 # 配置防火墙
 # firewall-cmd --zone=public --add-protocol=ftp --permanent &&
 firewall-cmd --zone=public --add-port=20-21/tcp --permanent &&
+firewall-cmd --zone=public --add-port=30000-30999/tcp --permanent &&
 firewall-cmd --reload
 
 # 重启vsftpd服务

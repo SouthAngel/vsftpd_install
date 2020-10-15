@@ -47,3 +47,6 @@ local_root | 指定根目录 | 文件夹路径
 &nbsp;&nbsp;&nbsp;&nbsp; /etc/shells 文件追加行 /sbin/nologin
 - 客户端可以登录，但无法进行其他动作，报错 425 failed to establish connection  
 &nbsp;&nbsp;&nbsp;&nbsp; 需要设置selinux关闭，具体操作设置 /etc/selinux/config SELINUX=disable
+- 报错 500 OOPS: vsftpd: refusing to run with writable root inside chroot()  
+&nbsp;&nbsp;&nbsp;&nbsp; 主目录权限问题，主目录需要拥有可执行权限，如果设置了chroot，还要要求主目录不能有写权限
+

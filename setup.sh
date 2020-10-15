@@ -34,7 +34,7 @@ setenforce 0
 
 # 拷贝配置文件
 cp -f ./templateFiles/vsftpd.conf /etc/vsftpd/vsftpd.conf
-touch /etc/vsftpd/chroot_list
+echo "vftptest1" > /etc/vsftpd/chroot_list
 
 # 配置虚拟用户
 if [ ! -e "/etc/vsftpd/vconf" ]; then

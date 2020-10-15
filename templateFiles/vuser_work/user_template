@@ -6,4 +6,4 @@ anon_upload_enable=NO
 idle_session_timeout=120
 max_clients=10
 max_per_ip=5
-local_max_rate=50000
+# local_max_rate=50000

@@ -40,6 +40,7 @@ chroot_local_user | 开启访问限制，不允许访问指定根目录以外的
 chroot_list_enable | 使用访问限制列表 | YES/NO
 chroot_list_file | 访问限制列表文件路径 | 文件路径
 local_root | 指定根目录 | 文件夹路径
+local_max_rate | 限速 | 速度值
 
 ----
 ## 遇到的问题

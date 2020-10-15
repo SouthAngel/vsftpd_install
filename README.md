@@ -23,7 +23,7 @@ sudo ./setup.sh
 - /etc/vsftpd/vconf/[username]
 
 设置 | 描述 | 内容
-- | - | -
+-|-|-
 anonymous_enable | 允许匿名用户 | YES/NO
 ftp_username | 匿名登录时使用的默认用户 | 指定用户名
 no_anon_password | 允许匿名用户不使用密码 | YES/NO

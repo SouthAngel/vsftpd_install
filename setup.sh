@@ -29,8 +29,9 @@ if [ -z "$stmp" ]; then
     useradd -d /opt/ftproot -s /sbin/nologin ftpvirtualuser
     chmod 755 /opt/ftproot
     fi
-sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
-setenforce 0
+setsebool -P ftpd_anon_write=1
+setsebool -P ftpd_full_access=1
+setsebool -P ftpd_use_passive_mode=1
 
 # 拷贝配置文件
 cp -f ./templateFiles/vsftpd.conf /etc/vsftpd/vsftpd.conf

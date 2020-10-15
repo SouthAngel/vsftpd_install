@@ -6,5 +6,8 @@ if [[ ! $# -eq 2 ]];then
 echo "$1" > ./tmpvu
 echo "$2" >> ./tmpvu
 db_load -T -t hash -f ./tmpvu /etc/vsftpd/vusers.db
+if [[ ! -e "../$1" ]];then
+    cp ./user_template "../$1"
+    fi
 rm -f ./tmpvu
 

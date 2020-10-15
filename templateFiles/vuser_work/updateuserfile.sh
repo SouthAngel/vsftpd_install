@@ -6,4 +6,9 @@ if [[ -n $1 ]];then
     fi
 rm -f /etc/vsftpd/vusers.db
 db_load -T -t hash -f $infile /etc/vsftpd/vusers.db
+for eachu in `sed '0~2d' ./vu.txt`; do
+    if [ ! -e "../${eachu}" ];then
+        cp ./user_template "../${eachu}"
+        fi
+    done
 unset infile
